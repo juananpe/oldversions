@@ -1,0 +1,32 @@
+version: '2'
+services:
+
+  joomla:
+    image: joomla:3.4.1
+    ports:
+      - 8080:80
+    environment:
+      JOOMLA_DB_HOST: mysql
+      JOOMLA_DB_NAME: joomla
+      JOOMLA_DB_USER: admin
+      JOOMLA_DB_PASSWORD: secret
+    depends_on:
+      - mysql
+    networks:
+      - all
+
+  mysql:
+    image: mysql:8.0.3
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: secret
+      MYSQL_DATABASE: joomla
+    entrypoint: ['/entrypoint.sh', '--character-set-server=utf8', '--collation-server=utf8_general_ci']
+    ports:
+      - "3306"
+    networks:
+      - all
+
+networks:
+  all:

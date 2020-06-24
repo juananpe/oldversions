@@ -1,6 +1,5 @@
 This is a  docker-compose file for joomla OLD versions (they have security issues, don't use in production!). 
 Parts of this repo are taken from the official joomla docker repo.
-Other parts have been obtained from https://github.com/MikeMichel/joomla.git
 
 ## How-to run
 
